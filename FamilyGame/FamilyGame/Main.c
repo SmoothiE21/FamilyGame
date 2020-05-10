@@ -1,6 +1,12 @@
 #define _CRT_SECURE_NO_WARNINGS
 #define _CRT_NONSTDC_NO_DEPRECATE
 #define WIN32_LEAN_AND_MEAN
+#define MARAD 0
+#define FEL -1
+#define LE 1
+#define JOBBRA 1
+#define BALRA -1
+
 
 #include <stdio.h>
 #include <stdlib.h>
@@ -14,42 +20,69 @@
 
 int main()
 {
-	printf("hello vilag\n");
-	time_t currentTime, startTime;
-	startTime = time(NULL);
-	int index = 1;
+	
+	player* players = (player*)calloc(4, sizeof(player));
+	players[0].pozicio = (int*)calloc(2, sizeof(int));
+	players[1].pozicio = (int*)calloc(2, sizeof(int));
+	players[2].pozicio = (int*)calloc(2, sizeof(int));
+	players[3].pozicio = (int*)calloc(2, sizeof(int));
+
+	players[0].nev = 'A';
+	players[1].nev = 'B';
+	players[2].nev = 'C';
+	players[3].nev = 'D';
+	
+	players[0].pozicio[X_poz] = 1;
+	players[0].pozicio[Y_poz] = 1;
+
+	players[1].pozicio[X_poz] = 1;
+	players[1].pozicio[Y_poz] = 1;
+
+	players[2].pozicio[X_poz] = 1;
+	players[2].pozicio[Y_poz] = 1;
+
+	players[3].pozicio[X_poz] = 1;
+	players[3].pozicio[Y_poz] = 1;
+
+	
+	
 	char** palya;
-	palya = beolvasPalya("be.txt");
-	int elozoX, elozoY;
-	int jatekosX = 1, jatekosY = 1;
-	palya[jatekosX][jatekosY] = 'P';
-	//kirajzolPalya(palya);
+	palya = beolvasPalya("be..txt");
+	
+	
+	
 	while (1) {
-		currentTime = time(NULL);
-		kirajzolPalya(palya);
-		printf("\033[1;31m");
+		for (int i = 0; i < 4; i++)
+		{
+			palya[players[i].pozicio[X_poz]][players[i].pozicio[Y_poz]] = players[i].nev;
 
-		printf("jobb: j\nle: l\n");
-		char option = getch();
-		elozoX = jatekosX;
-		elozoY = jatekosY;
-		if (option == 'j') {
-			jatekosY++;
-		}
-		else if (option == 'l') {
-			jatekosX++;
-		}
-		if (palya[jatekosX][jatekosY] == '0') {
-			palya[jatekosX][jatekosY] = 'P';
-			palya[elozoX][elozoY] = '0';
-		}
-		//Sleep(300);
-		system("CLS");
-		//	/*if (currentTime - startTime > 10) {
-		//		printf("Time limit exceeded!\n Game over\n");
-		//		break;*/
-		//}
 
+
+			kirajzolPalya(palya, players[i]);
+			//printf("\033[1;31m");
+			//printf("jobb: j\nle: l\n");
+			char option = getch();
+
+			if (option == 'd') {
+				mozgat(palya,players[i], JOBBRA, MARAD);//1-t jobbra,semennyit lefele
+
+
+
+			}
+			else if (option == 's') {
+				mozgat(palya, players[i], MARAD, LE);
+			}
+			else if (option == 'w') {
+				mozgat(palya, players[i], MARAD, FEL);//minusz 1 lefele  az 1 felfele
+			}
+			else if (option == 'a') {
+				mozgat(palya, players[i], BALRA, MARAD);
+			}
+
+
+			system("CLS");
+
+		}
 	}
 
 

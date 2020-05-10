@@ -6,10 +6,6 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
-
-
-
-
 int hossz;
 int szel;
 
@@ -17,7 +13,10 @@ int szel;
 
 char** beolvasPalya(const char* fajlNev)
 {
+
 	FILE* fin = fopen(fajlNev, "rt");
+	char* c = (char*)calloc(1, sizeof(char));
+
 	if (!fin) {
 		printf("Sikertelen");
 		exit(1);
@@ -30,35 +29,65 @@ char** beolvasPalya(const char* fajlNev)
 	}
 	for (int i = 0; i < hossz; ++i) {
 		for (int j = 0; j < szel; ++j) {
-			fscanf(fin, "%c\n", &palya[i][j]);
+			fscanf(fin, "%c\n", &c);
+			if (c[0] == '3' && (i == 0 || i == hossz - 1)) {
+				palya[i][j] = "-";
+			}
+			else if( c[0] == '3') {
+				palya[i][j] = "|";
+			}
+			else
+
+				if (c[0] == '0') {
+					palya[i][j] = " ";;
+				}
+				else
+
+					if (c[0] == '1') {
+						palya[i][j] = "*";
+					}
+					else
+						if (c[0] == 'R') {
+							palya[i][j]= "X";
+						}
+
 		}
 	}
 	return palya;
 }
-void kirajzolPalya(char** palya)
+void kirajzolPalya(char** palya,player jatekos)
 {
 	for (int i = 0; i < hossz; ++i) {
 		for (int j = 0; j < szel; ++j) {
-			if (palya[i][j] == '3' && (i == 0 || i == hossz - 1)) {
-				printf("-");
-			}
-			else if (palya[i][j] == '3') {
-				printf("|");
-			}
-			if (palya[i][j] == '0') {
-				printf(" ");
-			}
-			if (palya[i][j] == '1') {
-				printf("*");
-			}
-			if (palya[i][j] == 'R') {
-				printf("X");
-			}
-			if (palya[i][j] == 'P') {
-				printf("P");
-			}
+			
+			
+			
+				printf("%c", palya[i][j]);
 		}
 		printf("\n");
 	}
+
+
+	
+
 	system("pause");
+}
+
+void mozgat(char** palya, player jatekos, int le, int jobbra)
+{
+	int* pozicio = jatekos.pozicio;
+
+
+	if (palya[pozicio[X_poz] + jobbra][pozicio[Y_poz] + le] == '1' ||//kikerulni a csillagokat
+		palya[pozicio[X_poz] + jobbra][pozicio[Y_poz] + le] == '3') // nem kimenni a falbol
+	{
+		return;
+
+	}
+
+	palya[pozicio[X_poz]][pozicio[Y_poz]] = '0';
+	pozicio[Y_poz] += le;
+	pozicio[X_poz] += jobbra;
+	palya[pozicio[X_poz]][pozicio[Y_poz]] = jatekos.nev;
+
 }

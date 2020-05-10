@@ -1,4 +1,8 @@
 ﻿  FamilyGame.c
-  Main.c
-  Generating Code...
+C:\Users\Szalma Szilard\Desktop\FamilyG\FamilyGame\FamilyGame\FamilyGame\FamilyGame.c(32,16): warning C4477: 'fscanf' : format string '%c' requires an argument of type 'char *', but variadic argument 1 has type 'char **'
+C:\Users\Szalma Szilard\Desktop\FamilyG\FamilyGame\FamilyGame\FamilyGame\FamilyGame.c(34,22): warning C4047: '=': 'char' differs in levels of indirection from 'char [2]'
+C:\Users\Szalma Szilard\Desktop\FamilyG\FamilyGame\FamilyGame\FamilyGame\FamilyGame.c(37,22): warning C4047: '=': 'char' differs in levels of indirection from 'char [2]'
+C:\Users\Szalma Szilard\Desktop\FamilyG\FamilyGame\FamilyGame\FamilyGame\FamilyGame.c(42,23): warning C4047: '=': 'char' differs in levels of indirection from 'char [2]'
+C:\Users\Szalma Szilard\Desktop\FamilyG\FamilyGame\FamilyGame\FamilyGame\FamilyGame.c(47,24): warning C4047: '=': 'char' differs in levels of indirection from 'char [2]'
+C:\Users\Szalma Szilard\Desktop\FamilyG\FamilyGame\FamilyGame\FamilyGame\FamilyGame.c(51,24): warning C4047: '=': 'char' differs in levels of indirection from 'char [2]'
   FamilyGame.vcxproj -> C:\Users\Szalma Szilard\Desktop\FamilyG\FamilyGame\FamilyGame\Debug\FamilyGame.exe
