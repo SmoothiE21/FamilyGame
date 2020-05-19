@@ -20,7 +20,7 @@
   </ItemGroup>
   <PropertyGroup Label="Globals">
     <VCProjectVersion>16.0</VCProjectVersion>
-    <ProjectGuid>{A49E5459-B9D0-481F-80B7-6BD815E99C2A}</ProjectGuid>
+    <ProjectGuid>{607D7A75-031A-479F-9FBA-4747DDE8E6DD}</ProjectGuid>
     <Keyword>Win32Proj</Keyword>
     <RootNamespace>FamilyGame</RootNamespace>
     <WindowsTargetPlatformVersion>10.0</WindowsTargetPlatformVersion>
@@ -147,11 +147,8 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <Text Include="be..txt" />
-  </ItemGroup>
-  <ItemGroup>
-    <ClCompile Include="FamilyGame.c" />
-    <ClCompile Include="Main.c" />
+    <ClCompile Include="FamilyGame.cpp" />
+    <ClCompile Include="Main.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="FamilyGame.h" />
