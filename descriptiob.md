@@ -1,8 +1,8 @@
 Játékleirás:
 A játék neve: Family Game
-A játék leirása: A karantén időszaka összehozza a családokat, ezért szükség van társas játékokra a kikapcsolódáshoz.
-				 A játék egy nagy táblát tartalmaz, ami hasonló egy laborintushoz.
-				 Kezdetben a 4 játékos a pálya négy sarkából indul.
-				 Egy dobókocka segitségével a játékosok egymás után léphetnek annyit,ahányast a dobokócka muatat
-				 A játékot az nyeri, aki hamrabb beér a célba
-Játékszabályok: -
+A játék leirása: A játék két pályát tartalmaz magában. Van egy első és egy második szintünk. Az első szinten a játékos egy
+meghatározott pozitcióban kezd. A játék célja elérni a chack pointhoz, és az alatt a lehető legtöbb pontot gyűjteni.
+A játékos akadályokba ütközhet, ami vagy pontvesztéssel, vagy a mezőn való teljes újrakezdéssel járhat.
+Ha a játékos elér a checkponthoz, eljut a következő szintre.
+Ha sikeresen befejezi a második szintet is, a játék véget ér.
+Játékszabályok: - Az a szabály, hogy nincs szabály

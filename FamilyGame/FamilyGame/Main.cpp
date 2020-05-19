@@ -21,13 +21,13 @@ int main()
     printf("\033[1;31m");
 
     Jatekos* jatekos = jatekosLetrehozasa();
-    Szint* szint = beolvasPalya(jatekos, "terkep1.txt", 1);
+    Szint* szint = beolvasPalyaJatekossal(jatekos, "terkep1.txt", 1);
     while (true) {
 
         kirajzolPalya(szint);
 
         statok(szint);
-        mozgas(szint);
+        mozgas(szint);//mikor a palyer eléri az x-et váltódik a pálya
 
         system("CLS");
     }

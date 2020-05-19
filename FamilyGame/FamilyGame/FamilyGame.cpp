@@ -19,17 +19,16 @@ Jatekos* jatekosLetrehozasa() {
 }
 
 void mozgas(Szint* szint) {
-    int x = szint->jatekos->x;
-    int y = szint->jatekos->y;
-    int kovetkezoX = x;
-    int kovetkezoY = y;
+    
+    int kovetkezoX = szint->jatekos->x;
+    int kovetkezoY = szint->jatekos->y;
 
     char option = getch();
 
     switch (option)
     {
     case fel: {
-        kovetkezoX--;
+        kovetkezoX--;//sor -1
         break;
         }
     case le: {
@@ -44,7 +43,10 @@ void mozgas(Szint* szint) {
         kovetkezoY--;
         break;
     }
-    default: mozgas(szint); // recursive call while(true) helyett
+    default: {
+        mozgas(szint); // recursive call while(true) helyett
+        return;//nem tesz lepest ebben a hivasban
+    }
     }
     lepesMegtetele(szint, kovetkezoX, kovetkezoY);
 }
@@ -59,7 +61,7 @@ void mozgas(Szint* szint) {
  */
 void lepesMegtetele(Szint* szint, int kovetkezoX, int kovetkezoY) {
     char** palya = szint->palya;
-    switch (palya[kovetkezoX][kovetkezoY])
+    switch (palya[kovetkezoX][kovetkezoY])//ide akarunk menni
     {
     case '0': break;
     case '1': {                 //Vissza rakja az 1-1es pozicioba ha csillagnak megy
@@ -100,11 +102,11 @@ void lepesMegtetele(Szint* szint, int kovetkezoX, int kovetkezoY) {
         break;
     }
 
-    szint->jatekos->x = kovetkezoX;
+    szint->jatekos->x = kovetkezoX;//lepesmegtetel real
     szint->jatekos->y = kovetkezoY;
 }
 
-Szint* beolvasPalya(Jatekos* jatekos, const char* fajlNev, int hanyadik) {
+Szint* beolvasPalyaJatekossal(Jatekos* jatekos, const char* fajlNev, int hanyadik) {
     Szint* palya = (Szint*)calloc(1, sizeof(Szint));
     palya->jatekos = jatekos;
     palya->palya = beolvasPalya(fajlNev, palya->hossz, palya->szel);

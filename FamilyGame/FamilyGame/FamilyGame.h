@@ -20,17 +20,18 @@ struct Jatekos {//
 };//
 
 struct Szint {//
-    Jatekos* jatekos;//
+    Jatekos* jatekos;//szint:ami tart. a pályát és a játékos információit
     char** palya;//
     int hossz;//
     int szel;//
     int hanyadik;//
 };
 
-char** beolvasPalya(const char* fajlNev, int& hossz, int& szel);//
-void kirajzolPalya(Szint* szint);//
-Szint* beolvasPalya(Jatekos* jatekos, const char* fajlNev, int hanyadik);
 Jatekos* jatekosLetrehozasa();
-void mozgas(Szint* szint);//
+Szint* beolvasPalyaJatekossal(Jatekos* jatekos, const char* fajlNev, int hanyadik);//beolvassa a pályát a játékos szerint//ez a fgv hivja a beolvaspalyat
+char** beolvasPalya(const char* fajlNev, int& hossz, int& szel);//visszakuldi a pályát a hosszát meg a szélét meg a pályát
+void kirajzolPalya(Szint* szint);//
+
+void mozgas(Szint* szint);//hasznalja a lepesmegtetelt
 void lepesMegtetele(Szint* szint, int kovetkezoX, int kovetkezoY);//
 void statok(Szint* szint);//
