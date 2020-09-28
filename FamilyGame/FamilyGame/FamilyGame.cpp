@@ -4,6 +4,7 @@
 
 
 void statok(Szint* szint) {
+    printf("\033[1;34m");
     printf("Fel   : W\nLe    : S\nJobbra: D\nBalra : A\n");
  
     printf(" Jenlegi szint: %d", szint->hanyadik);
@@ -85,14 +86,26 @@ void lepesMegtetele(Szint* szint, int kovetkezoX, int kovetkezoY) {
         if (szint->hanyadik == 1) {
             szint->palya = beolvasPalya("terkep2.txt", szint->hossz, szint->szel);     //beolvassa a kettes palyat
             szint->hanyadik = 2;
-            kovetkezoX = 1;     // kezdes az 1-1esen a masodik palyan is
+            kovetkezoX = 1;    
             kovetkezoY = 1;
         }
         else {
             system("CLS");
             printf("\n\n\n\n");
-            printf("Vege a jateknak! Szep volt! \n\nVegleges pontszam: %d\n\n", szint->jatekos->pont);
-            printf("Nyomj egy betut a kilepeshez...");
+            printf("Vege a jateknak \n\nVegleges pontszam: %d", szint->jatekos->pont);
+            printf(" osszegyujtott korona\n");
+            if (szint->jatekos->pont < 0)
+            {
+                printf("Hat ez nagyon gyenge volt...\n\n");
+            }
+            else if ((szint->jatekos->pont > 0) && (szint->jatekos->pont < 20))
+            {
+                printf("Kozepes eredmeny!\n\n");
+            }
+            else if(szint->jatekos->pont >= 20)
+            printf("\nKivalo eredmeny!\n\n");
+
+            printf("Nyomj egy gombot a kilepeshez...\n");
             getch();
             exit(0);
         }
@@ -102,7 +115,7 @@ void lepesMegtetele(Szint* szint, int kovetkezoX, int kovetkezoY) {
         break;
     }
 
-    szint->jatekos->x = kovetkezoX;//lepesmegtetel real
+    szint->jatekos->x = kovetkezoX;//lepesmegtetel in  real
     szint->jatekos->y = kovetkezoY;
 }
 
@@ -151,9 +164,13 @@ void kirajzolPalya(Szint* szint)
     for (int i = 0; i < szint->hossz; ++i) {
         for (int j = 0; j < szint->szel; ++j) {
             if ( (szint->jatekos->x == i) && (j == szint->jatekos->y)) {
+                printf("\033[0;33m");
                 printf("P");
+                printf("\033[0;32m");
+               
             } else if (palya[i][j] == '3' && (i == 0 || i == szint->hossz - 1)) {
                 printf("-");
+                printf("\033[0;32m");
             }
             else if (palya[i][j] == '3') {
                 printf("|");
@@ -162,13 +179,19 @@ void kirajzolPalya(Szint* szint)
                 printf(" ");
             }
             else if (palya[i][j] == '1') {
+                printf("\033[1;35m");
                 printf("*");
+                printf("\033[0;32m");
             }
             else if (palya[i][j] == '2') {
+                printf("\033[1;36m");
                 printf("+");
+                printf("\033[0;32m");
             }
             else if (palya[i][j] == 'R') {
+                printf("\033[1;31m");
                 printf("X");
+                printf("\033[0;32m");
             }
         }
         printf("\n");
